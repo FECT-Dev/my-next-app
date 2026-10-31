@@ -14,8 +14,8 @@ const iconClass = "h-6 w-6";
 const routes: Route[] = [
   {
     href: "/dashboard",
-    title: "Dashboard",
-    description: "Everything at a glance: live readings, summaries and status.",
+    title: "Historical AQ Dashboard",
+    description: "Everything at a glance: Historical data, summaries and status.",
     featured: true,
     icon: (
       <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -25,8 +25,8 @@ const routes: Route[] = [
   },
   {
     href: "/aq",
-    title: "Air quality",
-    description: "Current air quality readings across monitoring stations.",
+    title: "Air quality Table using IQAir free API",
+    description: "Past 7 days' air quality readings across monitoring stations.",
     icon: (
       <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 8h11a3 3 0 100-3M3 12h15a3 3 0 110 3M3 16h8a3 3 0 110 3" />
@@ -35,7 +35,7 @@ const routes: Route[] = [
   },
   {
     href: "/aq-trends",
-    title: "AQ trends",
+    title: "AQ trend charts",
     description: "See how air quality has changed over time.",
     icon: (
       <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -45,8 +45,8 @@ const routes: Route[] = [
   },
   {
     href: "/aku_digana",
-    title: "Aku Digana",
-    description: "Readings from the Aku Digana station.",
+    title: "Akurana, Digana AQ Data Dashboard",
+    description: "Readings from the Akurana and Digana stations.",
     icon: (
       <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z" />
@@ -56,8 +56,8 @@ const routes: Route[] = [
   },
   {
     href: "/aku_digana_pm2.5",
-    title: "Aku Digana PM2.5",
-    description: "Fine particle (PM2.5) levels at Aku Digana.",
+    title: "Akurana_Digana PM2.5",
+    description: "Fine particle (PM2.5) levels at Akurana and Digana.",
     icon: (
       <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
         <circle cx="8" cy="9" r="2.5" />
@@ -69,8 +69,8 @@ const routes: Route[] = [
   },
   {
     href: "/scraped_Aq_Table",
-    title: "Scraped AQ table",
-    description: "The raw scraped data in a sortable-style table view.",
+    title: "AQ table using scraped data",
+    description: "Air quality table showing the past seven days of monitoring station readings scraped from the IQAir and PurpleAir websites.",
     icon: (
       <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 5h18v14H3V5zm0 5h18M9 5v14" />
@@ -102,7 +102,7 @@ export default function Home() {
         {/* Hero */}
         <header className="max-w-3xl">
           <h1 className="text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
-            Sri Lanka air quality, <span className="text-sky-700">in one place.</span>
+            FECT air quality, <span className="text-sky-700">in one place.</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
             Browse live readings, long-term trends and the raw scraped data
