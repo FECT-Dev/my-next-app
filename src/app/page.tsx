@@ -7,6 +7,8 @@ type Route = {
   description: string;
   icon: ReactNode;
   featured?: boolean;
+  wide?: boolean;
+  external?: boolean;
 };
 
 const iconClass = "h-6 w-6";
@@ -70,10 +72,24 @@ const routes: Route[] = [
   {
     href: "/scraped_Aq_Table",
     title: "AQ table using scraped data",
-    description: "Air quality table showing the past seven days of monitoring station readings scraped from the IQAir and PurpleAir websites.",
+    description:
+      "Air quality table showing the past seven days of monitoring station readings scraped from the IQAir and PurpleAir websites.",
     icon: (
       <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 5h18v14H3V5zm0 5h18M9 5v14" />
+      </svg>
+    ),
+  },
+  {
+    href: "https://lumbinichathurani.github.io/cleanair-map-3/",
+    title: "Live Sri Lanka air quality map",
+    description:
+      "Real-time air quality map combining multiple data sources. Opens in a new tab.",
+    wide: true,
+    external: true,
+    icon: (
+      <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5-2V5l5 2m0 13l6-2m-6 2V7m6 11l5 2V7l-5-2m0 13V5M9 7l6-2" />
       </svg>
     ),
   },
@@ -127,9 +143,14 @@ export default function Home() {
         <nav aria-label="Pages" className="mt-16">
           <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {routes.map((r) => (
-              <li key={r.href} className={r.featured ? "sm:col-span-2 lg:col-span-2" : ""}>
+              <li
+                key={r.href}
+                className={r.featured || r.wide ? "sm:col-span-2 lg:col-span-2" : ""}
+              >
                 <Link
                   href={r.href}
+                  target={r.external ? "_blank" : undefined}
+                  rel={r.external ? "noopener noreferrer" : undefined}
                   className={`group flex h-full flex-col justify-between rounded-3xl p-7 outline-none transition duration-200 focus-visible:ring-4 focus-visible:ring-sky-400/60 ${
                     r.featured
                       ? "bg-slate-900 text-white shadow-xl shadow-slate-900/20 hover:bg-slate-800"
@@ -148,7 +169,9 @@ export default function Home() {
                     <span className="flex items-center justify-between gap-3">
                       <span className="text-xl font-semibold">{r.title}</span>
                       <svg
-                        className={`h-5 w-5 shrink-0 transition-transform duration-200 group-hover:translate-x-1 ${
+                        className={`h-5 w-5 shrink-0 transition-transform duration-200 ${
+                          r.external ? "" : "group-hover:translate-x-1"
+                        } ${
                           r.featured ? "text-sky-300" : "text-slate-400 group-hover:text-sky-600"
                         }`}
                         fill="none"
@@ -157,7 +180,11 @@ export default function Home() {
                         strokeWidth={2}
                         aria-hidden
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d={r.external ? "M7 17L17 7M9 7h8v8" : "M5 12h14m-6-6l6 6-6 6"}
+                        />
                       </svg>
                     </span>
                     <span
