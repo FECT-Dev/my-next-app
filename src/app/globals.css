@@ -1,8 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Optional: your custom CSS */
 body {
-  @apply bg-white text-black font-sans;
+  background: white;
+  color: black;
 }
